@@ -111,6 +111,37 @@ atlas remembers per-group.
 You can add atlas to a family chat without worrying about it accidentally
 repeating something from a private conversation.
 
+## Pair it with a knowledge base
+
+If you already run a [self-growing personal knowledge base](https://georgemasto.substack.com/p/mind-expanding)
+(the Obsidian + Claude routine + GitHub pattern), atlas pairs with it
+naturally. Point atlas at your local `kb/` clone and it becomes the
+conversational front door to the graph:
+
+- **Add ideas from anywhere.** Text atlas a stray thought, an article
+  link, a half-formed observation. atlas drops it into `kb/raw/` with a
+  short note and the source. Your cloud-side synthesis routine picks it
+  up on its next pass and weaves it into a wiki the next morning. No
+  laptop required; the idea lives in the graph by the time you forget
+  you had it.
+- **Chat with what you already know.** "What have I been thinking about
+  re: ambient sensing?" atlas greps + reads your `kb/wiki/`, surfaces
+  the connected pages, and gives you a real answer drawn from your own
+  prior synthesis. Not a generic LLM answer. *Your* answer.
+- **Pull threads.** Ask "what didn't I follow up on last month?" and
+  atlas walks the graph for orphaned nodes, dead-end articles, and
+  recent additions that haven't been synthesized yet.
+- **Cross-reference with everything else.** Because atlas already
+  indexes your voice memos, your watch history, your saved articles,
+  and your email drafts, it can join those against the kb. "Which of
+  the voice notes I recorded this month connect to the alignment-faking
+  cluster?" becomes answerable.
+
+You don't need a kb to start with atlas; the integrations work without
+one. But if you've been building a knowledge graph and wishing for a
+better way to feed it and query it from your phone, this is the
+shape that closes the loop.
+
 ## Why use this instead of Claude.ai directly
 
 Claude.ai's chat, Cowork, and connectors are excellent for ad-hoc
