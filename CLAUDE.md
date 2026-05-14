@@ -33,7 +33,8 @@ groups/        — group-chat scope
 bin/run.sh     — launchd wrapper. tmux + claude + auto-Enter.
 bin/atlas-tell.sh — inject a prompt into your own session via tmux.
                  launchd-fired scripts use this to ask you to do MCP work.
-bin/daily-brief.sh — fired daily at ~7am local by launchd.
+bin/daily-brief.sh — fired daily at ~3am local by launchd so the
+                 brief lands before the user wakes up.
 launchd/       — plist specs (mirrored to ~/Library/LaunchAgents/)
 logs/          — atlas.log (pane mirror), run.log, launchd.{out,err}.log
 integrations/  — add data sources / capabilities here as you build them

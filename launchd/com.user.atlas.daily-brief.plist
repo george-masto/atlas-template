@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!--
-  Daily-briefing trigger. Fires daily at 07:03 local time.
+  Daily-briefing trigger. Fires daily at 03:03 local time so atlas
+  composes the brief while you sleep.
 
   Template substitution by install.sh:
     {{USER}}    → unix username
@@ -16,10 +17,14 @@
     <string>/Users/{{USER}}/atlas/bin/daily-brief.sh</string>
   </array>
 
+  <!-- Fires at 03:03 local. atlas runs the brief while you sleep so the
+       message is waiting when you reach for your phone in the morning.
+       Edit the Hour/Minute below if 3am isn't your shape. Off-:00 to
+       avoid the cron-thundering-herd. -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Hour</key>
-    <integer>7</integer>
+    <integer>3</integer>
     <key>Minute</key>
     <integer>3</integer>
   </dict>

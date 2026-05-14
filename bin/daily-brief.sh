@@ -1,5 +1,6 @@
 #!/bin/bash
-# Daily-briefing trigger. Fired by launchd at ~7am local time.
+# Daily-briefing trigger. Fired by launchd at ~3am local so atlas
+# composes the brief while you sleep.
 #
 # This script doesn't compose the briefing — it triggers atlas's running
 # session to do so, because the data sources (Calendar / Gmail / Linear)
