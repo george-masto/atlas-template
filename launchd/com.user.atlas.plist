@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  atlas: long-lived Claude Code session keeper.
+
+  This plist is a template. install.sh substitutes:
+    {{USER}}    → the unix username (e.g. "george")
+
+  The plist is then dropped into ~/Library/LaunchAgents/ and loaded with
+  `launchctl load -w`. launchd keeps run.sh alive across crashes (subject
+  to ThrottleInterval) and across logout/login (KeepAlive=true).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.{{USER}}.atlas</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/{{USER}}/atlas/bin/run.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/{{USER}}/atlas</string>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/{{USER}}/atlas/logs/launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/{{USER}}/atlas/logs/launchd.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/{{USER}}</string>
+    <key>PATH</key>
+    <string>/usr/local/bin:/Users/{{USER}}/.bun/bin:/Users/{{USER}}/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+</dict>
+</plist>

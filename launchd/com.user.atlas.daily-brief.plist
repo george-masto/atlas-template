@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Daily-briefing trigger. Fires daily at 07:03 local time.
+
+  Template substitution by install.sh:
+    {{USER}}    → unix username
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.{{USER}}.atlas.daily-brief</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/{{USER}}/atlas/bin/daily-brief.sh</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>7</integer>
+    <key>Minute</key>
+    <integer>3</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/{{USER}}/atlas/logs/daily-brief.launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/{{USER}}/atlas/logs/daily-brief.launchd.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/{{USER}}</string>
+  </dict>
+</dict>
+</plist>

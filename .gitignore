@@ -1,0 +1,28 @@
+# Runtime state — never commit
+logs/
+*.log
+.session-id
+.env
+.DS_Store
+.atlasbak*
+node_modules/
+__pycache__/
+*.pyc
+
+# Local-only models (download these yourself if you want whisper)
+vendor/whisper-models/*.bin
+
+# Per-user memory (the template ships an empty MEMORY.md — actual user state stays local)
+# (we DO commit MEMORY.md so a user has the template; their edits stay on their machine)
+
+# Group-chat memory files (per-group, accumulated as atlas runs)
+groups/-*/
+
+# Integration-specific data dirs (each integration's .gitignore also covers data/)
+integrations/*/data/
+
+# Writing-style profile is personal — never commit
+writing/style.md
+
+# Scheduled-task state from Claude Code
+.claude/scheduled_tasks*
