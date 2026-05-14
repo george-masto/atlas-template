@@ -46,13 +46,13 @@ YouTube account.
 ### You record a voice note while walking
 
 You hold the mic button in Telegram, talk for 30 seconds, send. atlas
-auto-transcribes it locally via whisper.cpp — **no audio leaves your Mac**
-— and replies in seconds. Or your iPhone voice memo syncs to your Mac via
+auto-transcribes it locally via whisper.cpp (**no audio leaves your Mac**)
+and replies in seconds. Or your iPhone voice memo syncs to your Mac via
 iCloud and atlas indexes it the same way. Weeks later you ask "what was
 that idea I had about photoacoustic imaging while I was on a walk last
 month?" and atlas searches your own spoken thoughts and finds it.
 
-Voice messages work in any language whisper supports — English, Greek,
+Voice messages work in any language whisper supports. English, Greek,
 Spanish, Mandarin, Hindi, dozens of others. atlas auto-detects the
 language per recording. You can speak Greek to a voice message about
 something technical and atlas will transcribe and answer in whichever
@@ -84,15 +84,15 @@ It surfaces the throughline.
 
 Each group gets its own isolated memory file at
 `~/atlas/groups/<chat_id>/MEMORY.md`. **The personal stuff in your DM
-memory is loaded but treated as confidential — atlas knows it, but never
+memory is loaded but treated as confidential, atlas knows it, but never
 volunteers it to the group.** Private memories don't bleed across.
 
 The group's own memory tracks who's in it, the inside jokes, the
 ongoing topics, and an explicit `## Consent` allowlist of facts you've
 agreed atlas can share with that specific room. Want your sibling group
-to be able to ask "is George free Saturday?" — add "calendar
+to be able to ask "is the user free Saturday?", add "calendar
 availability" to that group's consent list. Want your work group to
-know you're on a deadline but not your sleep schedule — say so once,
+know you're on a deadline but not your sleep schedule, say so once,
 atlas remembers per-group.
 
 It deflects personal questions it doesn't have consent for, welcomes
@@ -215,9 +215,9 @@ But the setup is short enough that there's no real reason not to start.
 ## Links
 
 - [Claude Code docs](https://docs.claude.com/en/docs/claude-code/overview)
-- [Telegram channels plugin](https://github.com/anthropics/claude-plugins-official) — official, in the marketplace
+- [Telegram channels plugin](https://github.com/anthropics/claude-plugins-official), official, in the marketplace
 - [whisper.cpp](https://github.com/ggml-org/whisper.cpp) for local audio transcription
-- [Karpathy on LLM knowledge bases](https://karpathy.bearblog.dev/llm-knowledge-bases/) — a pattern that pairs well with atlas
+- [Karpathy on LLM knowledge bases](https://karpathy.bearblog.dev/llm-knowledge-bases/), a pattern that pairs well with atlas
 
 ## License
 

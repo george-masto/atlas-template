@@ -8,7 +8,7 @@ session.
 - Facts the user tells you to remember
 - Setup details future-you should know (paths, tokens' rotation history,
   MCP server configs, smart-home device IDs as you add them)
-- Recurring annoyances you fixed — note the fix
+- Recurring annoyances you fixed, note the fix
 - Patterns / preferences that took multiple sessions to establish
 
 **Don't write here:**
@@ -25,4 +25,4 @@ matters.
 
 ## Setup
 
-(empty — will be populated as atlas runs)
+(empty, will be populated as atlas runs)
