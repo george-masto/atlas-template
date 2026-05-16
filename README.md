@@ -35,6 +35,11 @@ the "your data never leaves" property.)
 
 A handful of scenes drawn from real use.
 
+The integrations these scenes describe (YouTube, voice notes, email, and
+the rest) do not ship pre-built. The template is the agent core. Once it
+is running, atlas walks you through wiring up each system properly, one
+at a time, when you are ready for it.
+
 ### You want to talk about something you watched, read, or wrote
 
 "What was that video Karpathy posted last week on the new agent

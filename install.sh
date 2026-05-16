@@ -3,9 +3,10 @@
 #
 # Walks you through:
 #   1. Copying the template into ~/atlas
-#   2. Substituting your username into the launchd plists
-#   3. Setting up the Telegram bot config (.env + access.json)
-#   4. Installing + loading the launchd jobs
+#   2. Setting up the Telegram bot config (.env + access.json)
+#   3. Personalizing the agent config (CLAUDE.md, SOUL.md, group rules)
+#   4. Rendering the launchd plists
+#   5. Installing + loading the launchd jobs
 #
 # Run this from inside the cloned atlas-template directory.
 # Safe to re-run: skips steps already done, prompts before overwriting.
@@ -45,7 +46,7 @@ for cmd in tmux git curl; do
 done
 if [ ! -x "${HOME}/.local/bin/claude" ] && ! command -v claude >/dev/null 2>&1; then
   warn "Claude Code 'claude' binary not found in ${HOME}/.local/bin or PATH"
-  warn "install from https://docs.claude.com/en/docs/claude-code/overview"
+  warn "install from https://code.claude.com/docs/en/overview"
   MISSING=1
 else
   ok "found: claude"
@@ -152,9 +153,55 @@ fi
 echo
 
 # ------------------------------------------------------------------
-# Step 4 — template launchd plists with the username
+# Step 4 — personalize the agent config (fill template placeholders)
 # ------------------------------------------------------------------
-bold "4. Render launchd plists"
+bold "4. Personalize agent config"
+
+PERSONALIZE_FILES=(
+  "${TARGET_DIR}/CLAUDE.md"
+  "${TARGET_DIR}/SOUL.md"
+  "${TARGET_DIR}/groups/RULES.md"
+)
+
+if grep -q '{{' "${PERSONALIZE_FILES[@]}" 2>/dev/null; then
+  # Telegram user ID: from this run, else read it back from access.json, else ask.
+  if [ -z "${TG_USER_ID:-}" ]; then
+    TG_USER_ID="$(grep -oE '[0-9]{5,}' "${CHANNELS_DIR}/access.json" 2>/dev/null | head -1 || true)"
+  fi
+  if [ -z "${TG_USER_ID:-}" ]; then
+    ask "your Telegram user ID (numeric):"
+    read -r TG_USER_ID
+  fi
+
+  ask "your name, how atlas should refer to you (e.g. Jordan):"
+  read -r DISPLAY_NAME
+  DISPLAY_NAME="${DISPLAY_NAME:-${USER_NAME}}"
+
+  ask "your bot's @username from BotFather (without the @):"
+  read -r TG_BOT_USERNAME
+  TG_BOT_USERNAME="${TG_BOT_USERNAME#@}"
+
+  # '|' delimiter so a name never collides with sed's separator.
+  for f in "${PERSONALIZE_FILES[@]}"; do
+    [ -f "$f" ] || continue
+    sed -i '' \
+      -e "s|{{USER_NAME}}|${DISPLAY_NAME}|g" \
+      -e "s|{{user}}|${DISPLAY_NAME}|g" \
+      -e "s|{{USER}}|${USER_NAME}|g" \
+      -e "s|{{TELEGRAM_USER_ID}}|${TG_USER_ID}|g" \
+      -e "s|{{BOT_USERNAME}}|${TG_BOT_USERNAME}|g" \
+      "$f"
+    ok "personalized $(basename "$f")"
+  done
+else
+  ok "agent config already personalized — no placeholders found"
+fi
+echo
+
+# ------------------------------------------------------------------
+# Step 5 — template launchd plists with the username
+# ------------------------------------------------------------------
+bold "5. Render launchd plists"
 
 LA_DIR="${HOME}/Library/LaunchAgents"
 mkdir -p "${LA_DIR}"
@@ -172,14 +219,14 @@ done
 echo
 
 # ------------------------------------------------------------------
-# Step 5 — review + load
+# Step 6 — review + load
 # ------------------------------------------------------------------
-bold "5. Load launchd jobs"
+bold "6. Load launchd jobs"
 
 info "before loading, give the rendered plists in ${LA_DIR} a quick read."
 info "they will:"
 info "  - keep atlas alive 24/7 via run.sh (com.${USER_NAME}.atlas.plist)"
-info "  - fire a daily briefing trigger at 07:03 local (com.${USER_NAME}.atlas.daily-brief.plist)"
+info "  - fire a daily briefing trigger at 03:03 local (com.${USER_NAME}.atlas.daily-brief.plist)"
 echo
 ask "load both now with 'launchctl load -w'? [y/N]"
 read -r ANSWER
