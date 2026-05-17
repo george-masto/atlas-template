@@ -265,6 +265,7 @@ enough that there's no real reason not to start.
 
 ## Links
 
+- [CAPABILITIES.md](CAPABILITIES.md) — a structured map of what ships in the template versus what you build on top
 - [Claude Code overview](https://code.claude.com/docs/en/overview)
 - [Claude Code channels](https://code.claude.com/docs/en/channels) (the feature atlas runs on)
 - [Telegram channel plugin source](https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/telegram)
