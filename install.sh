@@ -262,3 +262,6 @@ echo
 info "for personal-data integrations (YouTube, Gmail drafting, Voice Memos, events, etc.):"
 info "  see the README's 'What this looks like in practice' section,"
 info "  then ask atlas to scaffold them one at a time."
+echo
+info "to connect a service's credentials (Google, Reddit, ...) down the road,"
+info "  ask atlas to run its 'connect' skill — guided, step-by-step setup."

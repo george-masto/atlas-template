@@ -263,6 +263,11 @@ that only it can answer because only it has your data colocated and
 indexed. That payoff is months out, not days. But the setup is short
 enough that there's no real reason not to start.
 
+When you're ready to wire up a service, ask atlas to run its `connect`
+skill — it walks you through getting credentials from each provider
+(Telegram, Google, Reddit, and more), one step at a time, and verifies
+each one before moving on.
+
 ## Links
 
 - [CAPABILITIES.md](CAPABILITIES.md) — a structured map of what ships in the template versus what you build on top
